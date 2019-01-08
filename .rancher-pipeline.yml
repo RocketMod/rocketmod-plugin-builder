@@ -1,0 +1,20 @@
+stages:
+- name: Compile
+  steps:
+  - runScriptConfig:
+      image: mono:latest
+      shellScript: |-
+        mkdir -p /build
+        ln -s `pwd` /build
+        cd /build
+- name: Publish
+  steps:
+  - publishImageConfig:
+      dockerfilePath: ./Dockerfile
+      buildContext: .
+      tag: rocketmod-plugin-builder:${CICD_EXECUTION_SEQUENCE}
+- name: Deploy
+  steps:
+  - applyYamlConfig:
+      path: ./deployment.yaml
+timeout: 60
