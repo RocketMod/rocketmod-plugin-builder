@@ -1,6 +1,12 @@
 FROM mono:3.12.1
 
-#RUN apt-get install vim mono-reference-assemblies-3.5
-#RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN apt-get update
+RUN apt-get install vim git zip -y
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-CMD ["/bin/bash"]
+RUN mkdir -p /build/output
+
+COPY ./build/start.sh /build/start.sh
+RUN chmod 777 /build/start.sh
+
+ENTRYPOINT "/build/start.sh"

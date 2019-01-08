@@ -4,13 +4,13 @@ stages:
   - runScriptConfig:
       image: mono:latest
       shellScript: |-
-        mkdir -p /build
+        mkdir -p /build 
         ln -s `pwd` /build
         cd /build
-- name: Publish
+- name: Publish  
   steps:
   - publishImageConfig:
-      dockerfilePath: ./Dockerfile
+      dockerfilePath: ./Dockerfile 
       buildContext: .
       tag: rocketmod-plugin-builder:${CICD_EXECUTION_SEQUENCE}
 - name: Deploy
