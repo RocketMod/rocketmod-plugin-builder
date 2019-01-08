@@ -6,4 +6,4 @@ docker run --name rocketmod-plugin-builder -it \
  -e GIT_BRANCH=master \
  -e PROJECT_FILE=Kits.csproj \
  -v `pwd`/output:/build/output \
- rocketmod-plugin-builder:legacy
+fr34kyn01535/rocketmod-plugin-builder:legacy
