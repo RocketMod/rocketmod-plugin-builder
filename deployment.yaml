@@ -20,9 +20,9 @@ spec:
       - name: rocketmod-plugin-builder
         image: ${CICD_IMAGE}:${CICD_EXECUTION_SEQUENCE}
       - env:
-        - name: GIT_BRANCH
-          value: master
-        - name: GIT_REPOSITORY
-          value: https://github.com/fr34kyn01535/Kits.git
-        - name: PROJECT_FILE
-          value: Kits.csproj
+        - name: "GIT_BRANCH"
+          value: "master"
+        - name: "GIT_REPOSITORY"
+          value: "https://github.com/fr34kyn01535/Kits.git"
+        - name: "PROJECT_FILE"
+          value: "Kits.csproj"
