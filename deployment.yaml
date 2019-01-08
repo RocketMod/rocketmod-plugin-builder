@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rocketmod-plugin-builder-test
+  labels:
+    app: rocketmod-plugin-builder
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rocketmod-plugin-builder
+  template:
+    metadata:
+      labels:
+        app: rocketmod-plugin-builder
+    spec:
+      imagePullSecrets:
+      - name: pipeline-docker-registry
+      containers:
+      - name: rocketmod-plugin-builder
+        image: ${CICD_IMAGE}:${CICD_EXECUTION_SEQUENCE}
