@@ -41,4 +41,4 @@ git log -1 --pretty=%B > /build/dist/git-commit-message.txt
 echo -e "\nPackaging build output..."
 cd /build/output
  
-zip "../dist/$pluginName.zip" .*
+zip "../dist/$pluginName.zip" *.*
