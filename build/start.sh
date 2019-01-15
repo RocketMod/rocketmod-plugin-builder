@@ -28,7 +28,7 @@ if [[ -z "${PROJECT_FILE}" ]]; then
 fi
 
 xbuild /p:Configuration=Release /p:DebugSymbols=false /p:TargetFrameworkVersion="v3.5" /p:PreBuildEvent= /p:PostBuildEvent= /p:OutDir=/build/output/ $PROJECT_FILE
-
+mkdir /build/dist
 echo -e "\n Analysing build output..."
 #TODO: run RepositoryHelper, fetch PluginName, assemblyname etc
 assembly=$(cat $PROJECT_FILE | grep -oPm1 "(?<=<AssemblyName>)[^<]+").dll 
@@ -36,10 +36,9 @@ echo -e "The assembly is $assembly"
 pluginName="${assembly%.*}"
 echo -e "Assuming the plugins name is $pluginName"
 #TODO END
-git log -1 --pretty=%B > /build/output/git-commit-message.txt
+git log -1 --pretty=%B > /build/dist/git-commit-message.txt
 
 echo -e "\nPackaging build output..."
 cd /build/output
-mkdir ./dist
-zip "dist/$pluginName.zip" .*
-/bin/bash
+ 
+zip "../dist/$pluginName.zip" .*
