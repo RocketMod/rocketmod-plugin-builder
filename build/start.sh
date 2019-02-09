@@ -16,7 +16,7 @@ git clone --single-branch --branch $GIT_BRANCH $GIT_REPOSITORY ./workspace
 
 echo -e "\nFetching latest RocketMod binaries..."
 mkdir -p "./workspace/lib/"
-curl -# https://ci.rocketmod.net/job/Rocket.Unturned/lastSuccessfulBuild/artifact/Rocket.Unturned/bin/Release/Rocket.zip -o Rocket.zip
+curl https://ci.rocketmod.net/job/Rocket.Unturned/lastSuccessfulBuild/artifact/Rocket.Unturned/bin/Release/Rocket.zip -o Rocket.zip
 unzip -joq Rocket.zip "Modules/Rocket.Unturned/*.dll" -d "./workspace/lib/" 
 
 echo -e "\nStarting the build process..."
@@ -28,7 +28,7 @@ if [[ -z "${PROJECT_FILE}" ]]; then
 fi
 
 xbuild /p:Configuration=Release /p:DebugSymbols=false /p:TargetFrameworkVersion="v3.5" /p:PreBuildEvent= /p:PostBuildEvent= /p:OutDir=/build/output/ $PROJECT_FILE
-mkdir /build/dist
+mkdir /build/dist/harbor -p
 echo -e "\nAnalysing build output..."
 #TODO: run RepositoryHelper, fetch PluginName, assemblyname etc
 assembly=$(cat $PROJECT_FILE | grep -oPm1 "(?<=<AssemblyName>)[^<]+").dll 
@@ -36,4 +36,4 @@ echo -e "The assembly is $assembly"
 pluginName="${assembly%.*}"
 echo -e "Assuming the plugins name is $pluginName"
 #TODO END
-git log -1 --pretty=%B > /build/dist/git-commit-message.txt
+git log -1 --pretty=%B > /build/dist/harbor/git-commit-message.txt
