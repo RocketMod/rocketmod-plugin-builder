@@ -1,4 +1,4 @@
-FROM mono:3.12.1
+FROM mono:latest
 
 RUN apt-get update
 RUN apt-get install vim git zip -y
