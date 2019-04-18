@@ -27,7 +27,7 @@ if [[ -z "${PROJECT_FILE}" ]]; then
   PROJECT_FILE=$(ls *.csproj | head -1)
 fi
 
-xbuild /p:Configuration=Release /p:DebugSymbols=false /p:TargetFrameworkVersion="v3.5" /p:PreBuildEvent= /p:PostBuildEvent= /p:OutDir=/build/output/ $PROJECT_FILE
+xbuild /p:Configuration=Release /p:DebugSymbols=false /p:TargetFrameworkVersion="v4.0" /p:PreBuildEvent= /p:PostBuildEvent= /p:OutDir=/build/output/ $PROJECT_FILE
 mkdir /build/dist/harbor -p
 echo -e "\nAnalysing build output..."
 #TODO: run RepositoryHelper, fetch PluginName, assemblyname etc
