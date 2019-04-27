@@ -2,7 +2,7 @@ stages:
 - name: Compile
   steps:
   - runScriptConfig:
-      image: mono:latest
+      image: mono:5.20
       shellScript: |-
         mkdir -p /build 
         ln -s `pwd` /build
