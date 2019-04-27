@@ -43,6 +43,4 @@ mono /build/workspace/lib/Rocket.RepositoryHelper.exe "/build/workspace/lib/$plu
 mv ./commands.xml /build/dist/harbor
 mv ./translation.xml /build/dist/harbor
 mv ./configuration.xml /build/dist/harbor
-
-#TODO END
 git log -1 --pretty=%B > /build/dist/harbor/git-commit-message.txt
