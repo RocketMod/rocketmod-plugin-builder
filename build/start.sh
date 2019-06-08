@@ -27,7 +27,7 @@ if [[ -z "${PROJECT_FILE}" ]]; then
   PROJECT_FILE=$(ls *.csproj | head -1)
 fi
 
-msbuild /p:Configuration=Release /p:DebugSymbols=false /p:TargetFrameworkVersion="v4.0" /p:PreBuildEvent= /p:PostBuildEvent= /p:OutDir=/build/output/ $PROJECT_FILE
+msbuild /p:Configuration=Release /p:DebugSymbols=false /p:TargetFrameworkVersion="v4.6.1" /p:PreBuildEvent= /p:PostBuildEvent= /p:OutDir=/build/output/ $PROJECT_FILE
 mkdir /build/dist/harbor -p
 echo -e "\nAnalysing build output..."
 assembly=$(cat $PROJECT_FILE | grep -oPm1 "(?<=<AssemblyName>)[^<]+").dll 
